@@ -16,6 +16,9 @@ Custom Component for Homeassistant to show the [zigbee2mqtt](https://github.com/
             title: 'Zigbee Map'
             url: '/local/zigbee2mqtt_networkmap/map.html'
             icon: 'mdi:graphql'
+    You can set the graphviz engine via URL Parameter: 
+    map.html?engine=circo (Default: dot, [Supported Engines](https://github.com/mdaines/viz.js/wiki/Supported-Graphviz-Features))  
+    
 5. Restart Homeassistant
 6. Call the service "zigbee2mqtt_networkmap.update"
 7. Test if everything is working
