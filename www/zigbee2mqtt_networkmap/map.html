@@ -2,21 +2,39 @@
 <html>
 <head>
   <meta charset="utf-8">
+      <style type="text/css" media="screen">
+body, html {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+    </style>  
 </head>
 <body>
   <script>document.write("<script type='text/javascript' src='source.js?v=" + Date.now() + "'><\/script>");</script>
   <script src="viz.js/viz.js"></script>
   <script src="viz.js/full.render.js"></script>
+  <script src='panzoom/panzoom.min.js'></script>
   <script>
-
+    var engine = new URL(window.location.href).searchParams.get("engine");
+	if (engine === null) {
+		engine = "dot";
+	}
     var viz = new Viz();
-    
-    viz.renderSVGElement(graph)
+    viz.renderSVGElement(graph,{'engine':engine})
     .then(function(element) {
-      document.body.appendChild(element);
+	  svg=document.body.appendChild(element);
+	  window.pz = panzoom(svg.firstElementChild, {autocenter: true, bounds: true})
     });
-
   </script>
-
 </body>
 </html>
