@@ -3,6 +3,8 @@ Custom Component for Homeassistant to show the [zigbee2mqtt](https://github.com/
 
 [Forum link with Screenshot](https://community.home-assistant.io/t/zigbee2mqtt-show-the-networkmap-in-hassio/89116)
 
+![map|658x499](map.gif) 
+
 **Instructions**
 1. Download or clone [https://github.com/rgruebel/ha_zigbee2mqtt_networkmap](https://github.com/rgruebel/ha_zigbee2mqtt_networkmap)
 2. Copy "custom_components/zigbee2mqtt_networkmap.py" to your "custom_components" folder.
