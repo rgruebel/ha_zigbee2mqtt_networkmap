@@ -1,4 +1,3 @@
-# https://community.home-assistant.io/t/zigbee2mqtt-show-the-networkmap-in-hassio/89116/26
 import homeassistant.loader as loader
 from datetime import datetime
 
