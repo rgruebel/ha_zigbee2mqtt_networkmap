@@ -13,7 +13,7 @@ def setup(hass, config):
     """Set up the Hello MQTT component."""
     mqtt = hass.components.mqtt
     topic = config[DOMAIN].get(CONF_TOPIC, DEFAULT_TOPIC)
-    entity_id = 'zigbee2mqtt_networkMap.last_update'
+    entity_id = 'zigbee2mqtt_networkmap.map_last_update'
 
     # Listener to be called when we receive a message.
     def message_received(topic, payload, qos):
