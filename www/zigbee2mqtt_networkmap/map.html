@@ -34,8 +34,8 @@
   <script src='panzoom/panzoom.min.js'></script>
   <script>
     var engine = new URL(window.location.href).searchParams.get("engine");
-	}
     if (engine === null) {
+      engine = "circo";
     }
     var viz = new Viz();
     viz.renderSVGElement(graph,{'engine':engine})
