@@ -3,20 +3,28 @@
 <head>
   <meta charset="utf-8">
       <style type="text/css" media="screen">
-body, html {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-}
-svg {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+        body, html {
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          padding: 0;
+          margin: 0;
+        }
+        svg {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        .footer{
+          position: absolute;
+          padding: 10px;
+          margin: 0;
+          background: rgba(255, 255, 255, 0.4);
+          bottom: 10px;
+          color: rgba(0, 0, 0, 0.52);
+        }
     </style>  
 </head>
 <body>
@@ -26,15 +34,16 @@ svg {
   <script src='panzoom/panzoom.min.js'></script>
   <script>
     var engine = new URL(window.location.href).searchParams.get("engine");
-	if (engine === null) {
-		engine = "circo";
 	}
+    if (engine === null) {
+    }
     var viz = new Viz();
     viz.renderSVGElement(graph,{'engine':engine})
     .then(function(element) {
-	  svg=document.body.appendChild(element);
-	  window.pz = panzoom(svg.firstElementChild, {autocenter: true, bounds: true})
+      svg=document.body.appendChild(element);
+      window.pz = panzoom(svg.firstElementChild, {autocenter: true, bounds: true});
     });
   </script>
+  <p class='footer'>Last updated on <script>document.write(last_update.toLocaleString());</script></p>
 </body>
 </html>

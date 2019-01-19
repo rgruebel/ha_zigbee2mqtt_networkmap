@@ -10,7 +10,7 @@ DEFAULT_TOPIC = 'zigbee2mqtt'
 
 
 def setup(hass, config):
-    """Set up the Hello MQTT component."""
+    """Set up the zigbee2mqtt_networkmap component."""
     mqtt = hass.components.mqtt
     topic = config[DOMAIN].get(CONF_TOPIC, DEFAULT_TOPIC)
     entity_id = 'zigbee2mqtt_networkmap.map_last_update'
@@ -19,10 +19,11 @@ def setup(hass, config):
     def message_received(topic, payload, qos):
         """Handle new MQTT messages."""
         # Save Response as JS variable in source.js
+        last_update = datetime.now()
         f = open(hass.config.path('www', 'zigbee2mqtt_networkmap', 'source.js'),"w")
-        f.write("var graph = \'"+payload.replace('\n', ' ').replace('\r', '')+"\'")
+        f.write("var last_update = new Date('"+last_update.strftime('%Y-%m-%d %H:%M:%S.%f')+"');\nvar graph = \'"+payload.replace('\n', ' ').replace('\r', '')+"\'")
         f.close()
-        hass.states.set(entity_id, datetime.now())
+        hass.states.set(entity_id, last_update)
 
     # Subscribe our listener to the networkmap topic.
     mqtt.subscribe(topic+'/bridge/networkmap/graphviz', message_received)
