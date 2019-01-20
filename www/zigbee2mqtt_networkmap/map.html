@@ -43,7 +43,26 @@
       svg=document.body.appendChild(element);
       window.pz = panzoom(svg.firstElementChild, {autocenter: true, bounds: true});
     });
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    async function updateMap() {
+      // Call the Webhook, wait a few seconds til source.js is ready and then reload the page.
+      try {
+        document.body.style.cursor = 'progress';
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("POST", webhook);
+        xmlhttp.setRequestHeader("Content-Type", "application/json");
+        xmlhttp.send();
+        await sleep(5000);
+        document.location.reload();
+        } 
+      finally {
+        document.body.style.cursor = 'default';
+        }
+    }
+   
   </script>
-  <p class='footer'>Last updated on <script>document.write(last_update.toLocaleString());</script></p>
+  <p class='footer'>Last updated on <script>document.write(last_update.toLocaleString());</script> - <a id="updateLink" title="Update" href="#" onclick="updateMap();return false;">Update now</a></p>
 </body>
 </html>
