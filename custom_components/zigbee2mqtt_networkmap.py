@@ -29,7 +29,7 @@ async def async_setup(hass, config):
         # Save Response as JS variable in source.js
         last_update = datetime.now()
         f = open(hass.config.path('www', 'zigbee2mqtt_networkmap', 'source.js'),"w")
-        f.write("var webhook = '"+webhook_url+"';\nvar last_update = new Date('"+last_update.strftime('%Y/%m/%d %H:%M:%S.%f')+"');\nvar graph = \'"+payload.replace('\n', ' ').replace('\r', '')+"\'")
+        f.write("var webhook = '"+webhook_url+"';\nvar last_update = new Date('"+last_update.strftime('%Y/%m/%d %H:%M:%S')+"');\nvar graph = \'"+payload.replace('\n', ' ').replace('\r', '')+"\'")
         f.close()
         hass.states.async_set(entity_id, last_update)
 
