@@ -36,7 +36,7 @@ Now you should create an automation which calls the service  "zigbee2mqtt_networ
         alias: 'Zigbee Map aktualisieren'  
         hide_entity: true  
         trigger:
-          platform: time
+          platform: time_pattern
           minutes: '/10'
           seconds: 00
         action:
