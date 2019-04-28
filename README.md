@@ -10,7 +10,7 @@ Custom Component for Homeassistant to show the [zigbee2mqtt](https://github.com/
 
 **Instructions**
 1. Download or clone [https://github.com/rgruebel/ha_zigbee2mqtt_networkmap](https://github.com/rgruebel/ha_zigbee2mqtt_networkmap)
-2. Copy "custom_components/zigbee2mqtt_networkmap.py" to your "custom_components" folder.
+2. Copy "custom_components/zigbee2mqtt_networkmap" and content to your "custom_components" folder.
 3. Copy the folder "www/zigbee2mqtt_networkmap" and content to your "www" folder.
 4. Add the following to your configuration.yaml. It is possible to update the map directly via button. If you want to use this functionality you also have to activate the webhook component
 
