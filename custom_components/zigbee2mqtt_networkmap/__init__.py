@@ -24,12 +24,13 @@ async def async_setup(hass, config):
     webhook_url = hass.components.webhook.async_generate_url(webhook_id)
 
     # Listener to be called when we receive a message.
-    async def message_received(topic, payload, qos):
+    async def message_received(msg):
         """Handle new MQTT messages."""
         # Save Response as JS variable in source.js
+        payload = msg.payload.replace('\n', ' ').replace('\r', '').replace("'", r"\'")
         last_update = datetime.now()
         f = open(hass.config.path('www', 'zigbee2mqtt_networkmap', 'source.js'),"w")
-        f.write("var webhook = '"+webhook_url+"';\nvar last_update = new Date('"+last_update.strftime('%Y/%m/%d %H:%M:%S')+"');\nvar graph = \'"+payload.replace('\n', ' ').replace('\r', '')+"\'")
+        f.write("var webhook = '"+webhook_url+"';\nvar last_update = new Date('"+last_update.strftime('%Y/%m/%d %H:%M:%S')+"');\nvar graph = \'"+payload+"\'")
         f.close()
         hass.states.async_set(entity_id, last_update)
 
