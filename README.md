@@ -17,7 +17,7 @@ Custom Component for Homeassistant to show the [zigbee2mqtt](https://github.com/
         webhook:
         
         zigbee2mqtt_networkmap:
-        
+          #topic: your topic (optional, default zigbee2mqtt)
         panel_iframe:
           networkmap:
             title: 'Zigbee Map'
