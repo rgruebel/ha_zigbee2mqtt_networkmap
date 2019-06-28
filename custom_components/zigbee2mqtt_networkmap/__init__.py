@@ -20,17 +20,21 @@ async def async_setup(hass, config):
         mqtt.async_publish(topic+'/bridge/networkmap', 'graphviz')
     # Register the Webhook
     webhook_id = hass.components.webhook.async_generate_id()
-    hass.components.webhook.async_register(DOMAIN, 'zigbee2mqtt_networkmap webhook', webhook_id, handle_webhook)
+    hass.components.webhook.async_register(
+        DOMAIN, 'zigbee2mqtt_networkmap webhook', webhook_id, handle_webhook)
     webhook_url = hass.components.webhook.async_generate_url(webhook_id)
 
     # Listener to be called when we receive a message.
     async def message_received(msg):
         """Handle new MQTT messages."""
         # Save Response as JS variable in source.js
-        payload = msg.payload.replace('\n', ' ').replace('\r', '').replace("'", r"\'")
+        payload = msg.payload.replace('\n', ' ').replace(
+            '\r', '').replace("'", r"\'")
         last_update = datetime.now()
-        f = open(hass.config.path('www', 'zigbee2mqtt_networkmap', 'source.js'),"w")
-        f.write("var webhook = '"+webhook_url+"';\nvar last_update = new Date('"+last_update.strftime('%Y/%m/%d %H:%M:%S')+"');\nvar graph = \'"+payload+"\'")
+        f = open(hass.config.path(
+            'www', 'zigbee2mqtt_networkmap', 'source.js'), "w")
+        f.write("var webhook = '"+webhook_url+"';\nvar last_update = new Date('" +
+                last_update.strftime('%Y/%m/%d %H:%M:%S')+"');\nvar graph = \'"+payload+"\'")
         f.close()
         hass.states.async_set(entity_id, last_update)
 
@@ -40,11 +44,10 @@ async def async_setup(hass, config):
     # Set the initial state.
     hass.states.async_set(entity_id, None)
 
-    #Service to publish a message on MQTT.
+    # Service to publish a message on MQTT.
     async def update_service(call):
         """Service to send a message."""
         mqtt.async_publish(topic+'/bridge/networkmap', 'graphviz')
 
     hass.services.async_register(DOMAIN, 'update', update_service)
     return True
-

@@ -21,9 +21,10 @@ http://www.zlib.net/zlib_license.html
 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global.Viz = factory());
-}(this, (function () { 'use strict';
+    typeof define === 'function' && define.amd ? define(factory) :
+      (global.Viz = factory());
+}(this, (function () {
+  'use strict';
 
   var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
     return typeof obj;
@@ -146,12 +147,12 @@ http://www.zlib.net/zlib_license.html
 
   function svgXmlToImageElement(svgXml) {
     var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-        _ref$scale = _ref.scale,
-        scale = _ref$scale === undefined ? defaultScale() : _ref$scale,
-        _ref$mimeType = _ref.mimeType,
-        mimeType = _ref$mimeType === undefined ? "image/png" : _ref$mimeType,
-        _ref$quality = _ref.quality,
-        quality = _ref$quality === undefined ? 1 : _ref$quality;
+      _ref$scale = _ref.scale,
+      scale = _ref$scale === undefined ? defaultScale() : _ref$scale,
+      _ref$mimeType = _ref.mimeType,
+      mimeType = _ref$mimeType === undefined ? "image/png" : _ref$mimeType,
+      _ref$quality = _ref.quality,
+      quality = _ref$quality === undefined ? 1 : _ref$quality;
 
     return new Promise(function (resolve, reject) {
       var svgImage = new Image();
@@ -192,12 +193,12 @@ http://www.zlib.net/zlib_license.html
 
   function svgXmlToImageElementFabric(svgXml) {
     var _ref2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-        _ref2$scale = _ref2.scale,
-        scale = _ref2$scale === undefined ? defaultScale() : _ref2$scale,
-        _ref2$mimeType = _ref2.mimeType,
-        mimeType = _ref2$mimeType === undefined ? 'image/png' : _ref2$mimeType,
-        _ref2$quality = _ref2.quality,
-        quality = _ref2$quality === undefined ? 1 : _ref2$quality;
+      _ref2$scale = _ref2.scale,
+      scale = _ref2$scale === undefined ? defaultScale() : _ref2$scale,
+      _ref2$mimeType = _ref2.mimeType,
+      mimeType = _ref2$mimeType === undefined ? 'image/png' : _ref2$mimeType,
+      _ref2$quality = _ref2.quality,
+      quality = _ref2$quality === undefined ? 1 : _ref2$quality;
 
     var multiplier = scale;
 
@@ -236,10 +237,10 @@ http://www.zlib.net/zlib_license.html
   var Viz = function () {
     function Viz() {
       var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          workerURL = _ref3.workerURL,
-          worker = _ref3.worker,
-          Module = _ref3.Module,
-          render = _ref3.render;
+        workerURL = _ref3.workerURL,
+        worker = _ref3.worker,
+        Module = _ref3.Module,
+        render = _ref3.render;
 
       classCallCheck(this, Viz);
 
@@ -260,18 +261,18 @@ http://www.zlib.net/zlib_license.html
       key: 'renderString',
       value: function renderString(src) {
         var _ref4 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-            _ref4$format = _ref4.format,
-            format = _ref4$format === undefined ? 'svg' : _ref4$format,
-            _ref4$engine = _ref4.engine,
-            engine = _ref4$engine === undefined ? 'dot' : _ref4$engine,
-            _ref4$files = _ref4.files,
-            files = _ref4$files === undefined ? [] : _ref4$files,
-            _ref4$images = _ref4.images,
-            images = _ref4$images === undefined ? [] : _ref4$images,
-            _ref4$yInvert = _ref4.yInvert,
-            yInvert = _ref4$yInvert === undefined ? false : _ref4$yInvert,
-            _ref4$nop = _ref4.nop,
-            nop = _ref4$nop === undefined ? 0 : _ref4$nop;
+          _ref4$format = _ref4.format,
+          format = _ref4$format === undefined ? 'svg' : _ref4$format,
+          _ref4$engine = _ref4.engine,
+          engine = _ref4$engine === undefined ? 'dot' : _ref4$engine,
+          _ref4$files = _ref4.files,
+          files = _ref4$files === undefined ? [] : _ref4$files,
+          _ref4$images = _ref4.images,
+          images = _ref4$images === undefined ? [] : _ref4$images,
+          _ref4$yInvert = _ref4.yInvert,
+          yInvert = _ref4$yInvert === undefined ? false : _ref4$yInvert,
+          _ref4$nop = _ref4.nop,
+          nop = _ref4$nop === undefined ? 0 : _ref4$nop;
 
         for (var i = 0; i < images.length; i++) {
           files.push({
@@ -297,8 +298,8 @@ http://www.zlib.net/zlib_license.html
       value: function renderImageElement(src) {
         var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
         var scale = options.scale,
-            mimeType = options.mimeType,
-            quality = options.quality;
+          mimeType = options.mimeType,
+          quality = options.quality;
 
 
         return this.renderString(src, _extends({}, options, { format: 'svg' })).then(function (str) {

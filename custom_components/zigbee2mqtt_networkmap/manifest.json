@@ -2,7 +2,9 @@
   "domain": "zigbee2mqtt_networkmap",
   "name": "zigbee2mqtt Networkmap",
   "documentation": "https://github.com/sebiweise/ha_zigbee2mqtt_networkmap",
+  "dependencies": ["mqtt"],
   "codeowners": [
     "@sebiweise"
-  ]
+  ],
+  "requirements": []
 }
