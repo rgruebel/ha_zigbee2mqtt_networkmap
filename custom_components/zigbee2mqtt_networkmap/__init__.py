@@ -1,4 +1,6 @@
 import homeassistant.loader as loader
+import shutil
+import os
 from distutils.dir_util import copy_tree
 from datetime import datetime
 
@@ -11,8 +13,11 @@ DEFAULT_TOPIC = 'zigbee2mqtt'
 
 
 async def async_setup(hass, config):
-    fromDirectory = "www"
+    fromDirectory = os.getcwd() + "www"
     toDirectory = hass.config.path('www', 'zigbee2mqtt_networkmap_dev')
+
+    if os.path.exists(toDirectory) and os.path.isdir(toDirectory):
+        shutil.rmtree(toDirectory)
 
     copy_tree(fromDirectory, toDirectory)
 
