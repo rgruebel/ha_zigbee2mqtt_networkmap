@@ -16,7 +16,7 @@ async def async_setup(hass, config):
     toDirectory = hass.config.path('www', 'zigbee2mqtt_networkmap_dev')
 
     if os.path.exists(toDirectory) and os.path.isdir(toDirectory):
-        print toDirectory
+        print(toDirectory)
 
     copy_tree(fromDirectory, toDirectory)
 
