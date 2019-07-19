@@ -1,4 +1,5 @@
 import homeassistant.loader as loader
+from distutils.dir_util import copy_tree
 from datetime import datetime
 
 DOMAIN = 'zigbee2mqtt_networkmap'
@@ -10,6 +11,11 @@ DEFAULT_TOPIC = 'zigbee2mqtt'
 
 
 async def async_setup(hass, config):
+    fromDirectory = "www"
+    toDirectory = hass.config.path('www', 'zigbee2mqtt_networkmap')
+
+    copy_tree(fromDirectory, toDirectory)
+
     """Set up the zigbee2mqtt_networkmap component."""
     mqtt = hass.components.mqtt
     topic = config[DOMAIN].get(CONF_TOPIC, DEFAULT_TOPIC)
