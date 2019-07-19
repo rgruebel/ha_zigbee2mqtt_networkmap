@@ -12,7 +12,7 @@ DEFAULT_TOPIC = 'zigbee2mqtt'
 
 
 async def async_setup(hass, config):
-    fromDirectory = hass.config.path('custom_components', 'zigbee2mqtt_networkmap_dev', 'www')
+    fromDirectory = hass.config.path('custom_components', 'zigbee2mqtt_networkmap', 'www')
     toDirectory = hass.config.path('www', 'zigbee2mqtt_networkmap')
 
     if os.path.exists(toDirectory) and os.path.isdir(toDirectory):
