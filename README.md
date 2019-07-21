@@ -11,8 +11,7 @@ Custom Component for Homeassistant to show the [zigbee2mqtt](https://github.com/
 **Instructions**
 1. Download or clone [https://github.com/rgruebel/ha_zigbee2mqtt_networkmap](https://github.com/rgruebel/ha_zigbee2mqtt_networkmap)
 2. Copy "custom_components/zigbee2mqtt_networkmap" and content to your "custom_components" folder.
-3. Copy the folder "www/zigbee2mqtt_networkmap" and content to your "www" folder.
-4. Add the following to your configuration.yaml. It is possible to update the map directly via button. If you want to use this functionality you also have to activate the webhook component
+3. Add the following to your configuration.yaml. It is possible to update the map directly via button. If you want to use this functionality you also have to activate the webhook component
 
         webhook:
         
@@ -26,9 +25,9 @@ Custom Component for Homeassistant to show the [zigbee2mqtt](https://github.com/
     You can set the graphviz engine via URL Parameter: 
     map.html?engine=circo (Default: circo, [Supported Engines](https://github.com/mdaines/viz.js/wiki/Supported-Graphviz-Features))  
     
-5. Restart Homeassistant
-6. Call the service "zigbee2mqtt_networkmap.update"
-7. Test if everything is working
+4. Restart Homeassistant
+5. Call the service "zigbee2mqtt_networkmap.update"
+6. Test if everything is working
 
 Now you should create an automation which calls the service  "zigbee2mqtt_networkmap.update" for example every 10 minutes:
 
