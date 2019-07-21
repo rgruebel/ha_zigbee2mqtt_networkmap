@@ -42,7 +42,7 @@ async def async_setup(hass, config):
             '\r', '').replace("'", r"\'")
         last_update = datetime.now()
         f = open(hass.config.path(
-            'www', 'zigbee2mqtt_networkmap', 'source.js'), "w")
+            'www', 'community', 'zigbee2mqtt_networkmap', 'source.js'), "w")
         f.write("var webhook = '"+webhook_url+"';\nvar last_update = new Date('" +
                 last_update.strftime('%Y/%m/%d %H:%M:%S')+"');\nvar graph = \'"+payload+"\'")
         f.close()
