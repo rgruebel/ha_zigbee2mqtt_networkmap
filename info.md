@@ -3,8 +3,6 @@ Custom Component for Homeassistant to show the [zigbee2mqtt](https://github.com/
 
 [Forum link with Screenshot](https://community.home-assistant.io/t/zigbee2mqtt-show-the-networkmap-in-hassio/89116)
 
-![map|658x499](map.gif)
-
 **Important:** you have to clear the browsercache after each update
 
 
