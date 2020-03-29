@@ -11,7 +11,7 @@ Custom Component for Homeassistant to show the [zigbee2mqtt](https://github.com/
 **Instructions**
 1. Download or clone [https://github.com/rgruebel/ha_zigbee2mqtt_networkmap](https://github.com/rgruebel/ha_zigbee2mqtt_networkmap)
 2. Copy "custom_components/zigbee2mqtt_networkmap" and content to your "custom_components" folder.
-3. Add the following to your configuration.yaml. It is possible to update the map directly via button. If you want to use this functionality you also have to activate the webhook component
+3. Add the following to your configuration.yaml. It is possible to update the map directly via button. If you want to use this functionality you also have to activate the webhook component. Otherwise you have to use the service "zigbee2mqtt_networkmap.update"
 
         webhook:
         
@@ -26,17 +26,6 @@ Custom Component for Homeassistant to show the [zigbee2mqtt](https://github.com/
     map.html?engine=circo (Default: circo, [Supported Engines](https://github.com/mdaines/viz.js/wiki/Supported-Graphviz-Features))  
     
 4. Restart Homeassistant
-5. Call the service "zigbee2mqtt_networkmap.update"
-6. Test if everything is working
+5. Test if everything is working
 
-Now you should create an automation which calls the service  "zigbee2mqtt_networkmap.update" for example every 10 minutes:
 
-      - id: update_networkmap
-        alias: 'Zigbee Map aktualisieren'  
-        hide_entity: true  
-        trigger:
-          platform: time_pattern
-          minutes: '/10'
-          seconds: 00
-        action:
-          service: zigbee2mqtt_networkmap.update
