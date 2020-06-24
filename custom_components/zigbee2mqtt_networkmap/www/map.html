@@ -92,12 +92,13 @@
     var tmpIChecks = 0;
     async function checkForUpdate() {
       try {
-        if(typeof webhook_check_update_url == 'undefined') throw "webhook_check_update_url JS var is undefined, please check the component/www folder is writable";
+        if(typeof webhook_check_update_id == 'undefined')
+          throw "webhook_check_update_id JS var is undefined, please check if <config>/www/community/zigbee2mqtt_networkmap folder is writable";
        
         document.getElementById('output').innerHTML = "Checking for graph update...";
         document.body.style.cursor = 'progress';
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("POST", webhook_check_update_url);
+        xmlhttp.open("POST", '/api/webhook/' + webhook_check_update_id);
         xmlhttp.setRequestHeader("Content-Type", "application/json");
         xmlhttp.send();
 
@@ -167,11 +168,13 @@
       
       // Call the Webhook, wait a few seconds til source.js is ready and then reload the page.
       try {
-        if(typeof webhook_trigger_update_url == 'undefined') throw "webhook_trigger_update_url JS var is undefined, please check the component/www folder is writable";
+        if(typeof webhook_trigger_update_id == 'undefined')
+          throw "webhook_trigger_update_id JS var is undefined, please check if <config>/www/community/zigbee2mqtt_networkmap folder is writable";
+          
             document.getElementById('output').innerHTML = "Requesting graph update...";
             document.body.style.cursor = 'progress';
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", webhook_trigger_update_url);
+            xmlhttp.open("POST", '/api/webhook/' + webhook_trigger_update_id);
             xmlhttp.setRequestHeader("Content-Type", "application/json");
             xmlhttp.send();
             
