@@ -91,7 +91,7 @@ async def async_setup(hass, config):
         tmpVar.received_update = False
         tmpVar.update_data = None
         tmpVar.last_update = None
-        mqtt.async_publish(topic+'/bridge/networkmap', 'graphviz')
+        mqtt.async_publish(topic+'/bridge/networkmap/routes', 'graphviz')
 
     hass.services.async_register(DOMAIN, 'update', update_service)
     return True
