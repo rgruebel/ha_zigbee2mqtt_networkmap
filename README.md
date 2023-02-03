@@ -1,3 +1,8 @@
+![maintenance-status](https://img.shields.io/badge/maintenance-deprecated-red.svg)
+
+The frontend of Zigbee2mqtt offers the possibility to display the map.
+
+
 # ha_zigbee2mqtt_networkmap
 Custom Component for Homeassistant to show the [zigbee2mqtt](https://github.com/Koenkk/zigbee2mqtt) Networkmap with [viz.js](https://github.com/mdaines/viz.js/).
 
