@@ -1,5 +1,6 @@
 import homeassistant.loader as loader
 import os
+import json
 from distutils.dir_util import copy_tree
 from datetime import datetime
 from aiohttp import web
@@ -60,7 +61,9 @@ async def async_setup(hass, config):
     async def message_received(msg):
         """Handle new MQTT messages."""
         # Save Response as JS variable in source.js
-        payload = msg.payload.replace('\n', ' ').replace(
+        jsonMessage = json.loads(msg.payload)
+        graphValue = jsonMessage["data"]["value"]
+        payload = graphValue.replace('\n', ' ').replace(
             '\r', '').replace("'", r"\'")
         last_update = datetime.now()
         f = open(hass.config.path(
@@ -74,7 +77,7 @@ async def async_setup(hass, config):
         tmpVar.last_update = last_update.strftime('%Y/%m/%d %H:%M:%S')
 
     # Subscribe our listener to the networkmap topic.
-    await mqtt.async_subscribe(topic+'/bridge/networkmap/graphviz', message_received)
+    await mqtt.async_subscribe(topic+'/bridge/response/networkmap', message_received)
 
     # Set the initial state.
     hass.states.async_set(entity_id, None)
@@ -88,7 +91,7 @@ async def async_setup(hass, config):
         tmpVar.received_update = False
         tmpVar.update_data = None
         tmpVar.last_update = None
-        mqtt.async_publish(topic+'/bridge/networkmap/routes', 'graphviz')
+        mqtt.async_publish(topic+'/bridge/request/networkmap', '{"type": "graphviz", "routes": true}')	
 
     hass.services.async_register(DOMAIN, 'update', update_service)
     return True
